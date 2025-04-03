@@ -1,0 +1,19 @@
+{
+  "name": "X Work",
+  "short_name": "X Work ",
+  "description": "X Work is a scalable, flexible and powerful no-code/low-code development platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "en-US",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

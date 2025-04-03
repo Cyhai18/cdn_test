@@ -1,0 +1,21 @@
+(function(e,t){typeof exports=="object"&&typeof module!="undefined"?t(exports,require("@nocobase/client"),require("@nocobase/plugin-workflow/client"),require("react/jsx-runtime"),require("react"),require("antd"),require("@ant-design/icons"),require("react-i18next")):typeof define=="function"&&define.amd?define(["exports","@nocobase/client","@nocobase/plugin-workflow/client","react/jsx-runtime","react","antd","@ant-design/icons","react-i18next"],t):(e=typeof globalThis!="undefined"?globalThis:e||self,t(e["@nocobase/plugin-workflow-parallel"]={},e["@nocobase/client"],e["@nocobase/plugin-workflow"],e.jsxRuntime,e.react,e.antd,e["@ant-design/icons"],e["react-i18next"]))})(this,function(e,t,n,s,b,d,u,p){"use strict";var M=Object.defineProperty;var S=(e,t,n)=>t in e?M(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var c=(e,t,n)=>(S(e,typeof t!="symbol"?t+"":t,n),n);var m=(e,t,n)=>new Promise((s,b)=>{var d=a=>{try{p(n.next(a))}catch(h){b(h)}},u=a=>{try{p(n.throw(a))}catch(h){b(h)}},p=a=>a.done?s(a.value):Promise.resolve(a.value).then(d,u);p((n=n.apply(e,t)).next())});const a="workflow-parallel";function h(f,x={}){const{t:l}=v(x);return l(f)}function v(f){return p.useTranslation(a,f)}class $ extends n.Instruction{constructor(){super(...arguments);c(this,"title",`{{t("Parallel branch", { ns: "${a}" })}}`);c(this,"type","parallel");c(this,"group","control");c(this,"description",`{{t("Run multiple branch processes in parallel.", { ns: "${a}" })}}`);c(this,"icon",s.jsx(u.ApartmentOutlined,{}));c(this,"fieldset",{mode:{type:"string",title:`{{t("Mode", { ns: "${a}" })}}`,"x-decorator":"FormItem","x-component":"RadioWithTooltip","x-component-props":{options:[{value:"all",label:`{{t('All succeeded', { ns: "${a}" })}}`,tooltip:`{{t('Continue after all branches succeeded', { ns: "${a}" })}}`},{value:"any",label:`{{t('Any succeeded', { ns: "${a}" })}}`,tooltip:`{{t('Continue after any branch succeeded', { ns: "${a}" })}}`},{value:"race",label:`{{t('Any succeeded or failed', { ns: "${a}" })}}`,tooltip:`{{t('Continue after any branch succeeded, or exit after any branch failed.', { ns: "${a}" })}}`}]},default:"all"}});c(this,"components",{RadioWithTooltip:n.RadioWithTooltip})}Component({data:l}){const{styles:A}=n.useStyles(),{id:B,config:{mode:O}}=l,{workflow:y,nodes:T}=n.useFlowContext(),i=T.reduce((r,o)=>o.upstreamId===B&&o.branchIndex!=null?r.concat(o):r,[]).sort((r,o)=>r.branchIndex-o.branchIndex),[g,C]=b.useState(Math.max(2,i.length)),{getAriaLabel:q}=n.useGetAriaLabelOfAddButton(l),N=h("Add branch"),j=Array(Math.max(0,g-i.length)).fill(null),I=i[i.length-1];return s.jsx(n.NodeDefaultView,{data:l,children:s.jsxs("div",{className:A.nodeSubtreeClass,children:[s.jsxs("div",{className:A.branchBlockClass,children:[i.map(r=>s.jsx(n.Branch,{from:l,entry:r,branchIndex:r.branchIndex},r.id)),j.map((r,o)=>s.jsx(n.Branch,{from:l,branchIndex:(I?I.branchIndex:0)+o+1,controller:i.length+o>1?s.jsx("div",{className:t.css`
+                        padding-top: 2em;
+
+                        > button {
+                          .anticon {
+                            transform: rotate(45deg);
+                          }
+                        }
+                      `,children:s.jsx(d.Button,{shape:"circle",icon:s.jsx(u.PlusOutlined,{}),onClick:()=>C(g-1),disabled:y.executed,size:"small"})}):null},`temp_${i.length+o}`))]}),s.jsx(d.Tooltip,{title:N,className:t.css`
+              visibility: ${y.executed?"hidden":"visible"};
+            `,children:s.jsx(d.Button,{"aria-label":q("add-branch"),icon:s.jsx(u.PlusOutlined,{}),className:t.css`
+                position: relative;
+                top: 1em;
+                transform-origin: center;
+                transform: rotate(45deg);
+
+                .anticon {
+                  transform-origin: center;
+                  transform: rotate(-45deg);
+                }
+              `,onClick:()=>C(g+1),disabled:y.executed,size:"small"})})]})})}}class w extends t.Plugin{afterAdd(){return m(this,null,function*(){})}beforeLoad(){return m(this,null,function*(){})}load(){return m(this,null,function*(){this.app.pm.get(n).registerInstruction("parallel",$)})}}e.default=w,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
