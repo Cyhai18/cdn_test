@@ -17,6 +17,6 @@
 </head>
 <body>
 <div id="root"></div>
-<script src="/umi.3cf2c3e8.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Cyhai18/cdn_test@main/dist/client/umi.b1ebd2af.js"></script>
 
 </body></html>
